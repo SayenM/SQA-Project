@@ -6,16 +6,13 @@ class Menu:
         self._type = menu_type
         self.frontend = frontend
 
-
-
-    def run(self):
-        # Main loop to read user commands and process them.
-        while True:
-            try:
-                command = input("Enter command: ")
-                self.handle_command(command)
-            except EOFError:
-                break
+    @property
+    def type(self):
+        return self._type
+    
+    @type.setter
+    def type(self, value):
+        self._type = value
 
     def handle_command(self, command: str):
         parts = command.strip().split()
