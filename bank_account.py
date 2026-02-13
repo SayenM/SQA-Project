@@ -1,4 +1,4 @@
-# models.py
+# bank_account.py
 
 class BankAccount:
     """Represents a user bank account."""
@@ -7,6 +7,7 @@ class BankAccount:
         self.account_name = acc_name
         self.account_number = acc_number
         self.balance = float(balance)
+        self.status = "A" # A for active, I for inactive
 
     def get_balance(self) -> float:
         """Returns the current account balance."""
