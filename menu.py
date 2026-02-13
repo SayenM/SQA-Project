@@ -55,8 +55,8 @@ class Menu:
 
         elif action == "DISABLE":
             acc_number = parts[1]
-            self.transactions.disable(acc_number)
+            self.frontend.disable(acc_number)
 
         elif action == "CHANGEPLAN":
             acc_number = parts[1]
-            self.transactions.changeplan(acc_number)
+            self.frontend.changeplan(acc_number)

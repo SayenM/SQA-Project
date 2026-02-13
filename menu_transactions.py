@@ -27,7 +27,7 @@ class FrontEnd:
                     balance = float(balance_str)
                 except ValueError:
                     balance = 0.0
-                self.accounts[acc_number] = BankAccount(name, acc_number, balance)
+                self.accounts[acc_number] = BankAccount(name, acc_number, balance, status)
     
     # ------------------------
     # LOGIN / LOGOUT
@@ -53,6 +53,9 @@ class FrontEnd:
         if acc_number not in self.accounts:
             print(f"Account {acc_number} not found")
             return
+        if not self.accounts[acc_number].is_active():
+            print(f"Account {acc_number} is disabled, transaction denied")
+            return
         account = self.accounts[acc_number]
         account.edit_balance(account.get_balance() - amount)
         print(f"Withdrew {amount} from {acc_number}")
@@ -62,6 +65,9 @@ class FrontEnd:
         if acc_number not in self.accounts:
             print(f"Account {acc_number} not found")
             return
+        if not self.accounts[acc_number].is_active():
+            print(f"Account {acc_number} is disabled, transaction denied")
+            return
         account = self.accounts[acc_number]
         account.edit_balance(account.get_balance() + amount)
         print(f"Deposited {amount} to {acc_number}")
@@ -70,6 +76,12 @@ class FrontEnd:
     def transfer(self, from_acc, to_acc, amount):
         if from_acc not in self.accounts or to_acc not in self.accounts:
             print("One or both accounts not found")
+            return
+        if not self.accounts[from_acc].is_active():
+            print(f"Account {from_acc} is disabled, transaction denied")
+            return
+        if not self.accounts[to_acc].is_active():
+            print(f"Account {to_acc} is disabled, transaction denied")
             return
         sender = self.accounts[from_acc]
         receiver = self.accounts[to_acc]
@@ -82,6 +94,9 @@ class FrontEnd:
     def paybill(self, acc_number, payee, amount):
         if acc_number not in self.accounts:
             print(f"Account {acc_number} not found")
+            return
+        if not self.accounts[acc_number].is_active():
+            print(f"Account {acc_number} is disabled, transaction denied")
             return
         account = self.accounts[acc_number]
         account.edit_balance(account.get_balance() - amount)
@@ -115,17 +130,19 @@ class FrontEnd:
         if not self.admin:
             print("Only admin can disable accounts")
             return
-        # Placeholder
-        print(f"Account {acc_number} disable not implemented yet")
-        self.append_daily_transaction("07", "", acc_number)
+        account = self.accounts[acc_number]
+        account.status = "D"
+        self.append_daily_transaction("07", account.account_name, acc_number)
+        print(f"Account {acc_number} disabled")
 
     def changeplan(self, acc_number):
         if not self.admin:
             print("Only admin can change plans")
             return
-        # Placeholder
-        print(f"Account {acc_number} changeplan not implemented yet")
-        self.append_daily_transaction("08", "", acc_number)
+        account = self.accounts[acc_number]
+        account.payment_plan = "NP" # Switch from student plan to non-student
+        print(f"Account {acc_number} changeplan to a non-student plan")
+        self.append_daily_transaction("08", account.account_name, acc_number)
     
     # ------------------------
     # SESSION TRANSACTION FILE
