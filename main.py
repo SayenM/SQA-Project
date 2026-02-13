@@ -1,4 +1,8 @@
 # main.py
+'''
+The overall entry point for the banking application. Initializes the FrontEnd and Menu,
+then enters a loop to read user commands from the console and process them.
+'''
 from menu_transactions import FrontEnd
 from menu import Menu
 

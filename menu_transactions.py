@@ -1,4 +1,7 @@
 from bank_account import BankAccount
+"""
+Handles accounts, balances, admin commands, and session transaction writing.
+"""
 
 class FrontEnd:
     # Handles accounts, balances, admin commands, and session transaction writing.
@@ -32,11 +35,17 @@ class FrontEnd:
     # ------------------------
     # LOGIN / LOGOUT
     # ------------------------
+
+    # Login a user (admin if username starts with "admin", otherwise regular user).
+    # LOGIN <username> <password>
+    # LOGIN admin1 password123
     def login(self, username, password=""):
         self.current_user = username
         self.admin = username.lower().startswith("admin")
         print(f"{username} logged in")
 
+    # Logout current user and write session transactions to file.
+    # LOGOUT
     def logout(self):
         if self.current_user:
             print(f"{self.current_user} logged out")
@@ -49,6 +58,10 @@ class FrontEnd:
     # ------------------------
     # TRANSACTIONS
     # ------------------------
+
+    # Withdraw amount from an account
+    # WITHDRAW <account_number> <amount>
+    # WITHDRAW 12345 50.00
     def withdraw(self, acc_number, amount):
         if acc_number not in self.accounts:
             print(f"Account {acc_number} not found")
@@ -61,6 +74,9 @@ class FrontEnd:
         print(f"Withdrew {amount} from {acc_number}")
         self.append_daily_transaction("01", account.account_name, acc_number, amount)
 
+    # Deposit amount to an account
+    # DEPOSIT <account_number> <amount>
+    # DEPOSIT 12345 100.00
     def deposit(self, acc_number, amount):
         if acc_number not in self.accounts:
             print(f"Account {acc_number} not found")
@@ -73,6 +89,9 @@ class FrontEnd:
         print(f"Deposited {amount} to {acc_number}")
         self.append_daily_transaction("04", account.account_name, acc_number, amount)
 
+    # Transfer amount from one account to another
+    # TRANSFER <from_account> <to_account> <amount>
+    # TRANSFER 12345 67890 50.00
     def transfer(self, from_acc, to_acc, amount):
         if from_acc not in self.accounts or to_acc not in self.accounts:
             print("One or both accounts not found")
@@ -91,6 +110,9 @@ class FrontEnd:
         self.append_daily_transaction("02", sender.account_name, from_acc, amount)
         self.append_daily_transaction("02", receiver.account_name, to_acc, amount)
 
+    # Pay a bill from an account (e.g. utilities, credit card)
+    # PAYBILL <account_number> <payee> <amount>
+    # PAYBILL 12345 Electric Co 100.00
     def paybill(self, acc_number, payee, amount):
         if acc_number not in self.accounts:
             print(f"Account {acc_number} not found")
@@ -106,6 +128,8 @@ class FrontEnd:
     # ------------------------
     # ADMIN COMMANDS
     # ------------------------
+
+    # Create a new account (Admin only)
     def create(self, acc_number, name, balance):
         if not self.admin:
             print("Only admin can create accounts")
@@ -114,6 +138,7 @@ class FrontEnd:
         print(f"Account {acc_number} created with balance {balance}")
         self.append_daily_transaction("05", name, acc_number, balance)
 
+    # Delete an account (Admin only)
     def delete(self, acc_number):
         if not self.admin:
             print("Only admin can delete accounts")
@@ -126,6 +151,7 @@ class FrontEnd:
         else:
             print(f"Account {acc_number} not found")
 
+    # Disable an account (Admin only)
     def disable(self, acc_number):
         if not self.admin:
             print("Only admin can disable accounts")
@@ -135,12 +161,13 @@ class FrontEnd:
         self.append_daily_transaction("07", account.account_name, acc_number)
         print(f"Account {acc_number} disabled")
 
+    # Switch from student plan to non-student plan (Admin only)
     def changeplan(self, acc_number):
         if not self.admin:
             print("Only admin can change plans")
             return
         account = self.accounts[acc_number]
-        account.payment_plan = "NP" # Switch from student plan to non-student
+        account.payment_plan = "NP" 
         print(f"Account {acc_number} changeplan to a non-student plan")
         self.append_daily_transaction("08", account.account_name, acc_number)
     

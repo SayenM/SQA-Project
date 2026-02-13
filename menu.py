@@ -1,4 +1,10 @@
 # menu.py
+"""
+Handles console input/output and calls FrontEnd for transactions.
+The Menu class processes user commands and interacts with the FrontEnd to perform banking operations like 
+login, logout, withdraw, deposit, transfer, pay bills, create accounts, delete accounts, disable accounts, and change payment plans.
+"""
+
 class Menu:
     # Handles console input/output and calls FrontEnd for transactions.
 
