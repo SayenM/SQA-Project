@@ -1,0 +1,7 @@
+login
+standard
+Alice
+transfer
+12345
+67890
+500

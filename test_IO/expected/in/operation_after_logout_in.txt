@@ -1,0 +1,7 @@
+login
+standard
+Alice
+logout
+withdrawal
+12345
+100

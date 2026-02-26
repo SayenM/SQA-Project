@@ -1,0 +1,5 @@
+login
+admin
+delete
+GhostUser
+99999

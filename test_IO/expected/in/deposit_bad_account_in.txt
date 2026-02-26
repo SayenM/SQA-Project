@@ -1,0 +1,6 @@
+login
+standard
+Alice
+deposit
+99999
+100

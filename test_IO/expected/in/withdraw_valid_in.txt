@@ -1,0 +1,6 @@
+login
+standard
+Alice
+withdrawal
+12345
+300

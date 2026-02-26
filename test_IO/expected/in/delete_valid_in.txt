@@ -1,0 +1,5 @@
+login
+admin
+delete
+Charlie
+54321
