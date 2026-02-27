@@ -36,6 +36,17 @@ for expected in os.listdir(expected_dir):
 print("| Test | Result | Diff |")
 print("|------|--------|------|")
 
+fail_count = 0
+total_count = 0
+
 for name, result, diff in rows:
-    diff_cell = "```\n" + diff + "\n```" if diff else ""
-    print(f"| {name} | {result} | {diff_cell} |")
+    diff_cell = "\n```\n" + diff + "\n```" if diff else ""
+    total_count += 1
+
+    if result == "FAIL":
+        fail_count += 1
+        print(f"| {name} | {result} | {diff_cell}")
+    else:
+        print(f"| {name} | {result} |")
+
+print(f"\n {total_count - fail_count} / {total_count} tests passed \n {fail_count} tests failed")
