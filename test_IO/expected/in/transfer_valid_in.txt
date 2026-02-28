@@ -1,7 +1,7 @@
 login
 standard
-Alice
+Alice Jane
 transfer
 12345
-67890
+00002
 500

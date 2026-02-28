@@ -1,6 +1,6 @@
 login
 standard
-Alice
+Alice Jane
 deposit
 99999
 100

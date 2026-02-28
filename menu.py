@@ -22,11 +22,7 @@ class Menu:
             return
 
         if action == "login":
-            session_type = input().strip()
-            name = ""
-            if session_type == "standard":
-                name = input().strip()
-            self.frontend.login(session_type, name)
+            self.frontend.login()
 
         elif action == "logout":
             self.frontend.logout()
@@ -80,14 +76,17 @@ class Menu:
             self.frontend.create("", name, balance)
 
         elif action == "delete":
+            name = input().strip()
             acc = input().strip()
             self.frontend.delete(acc)
 
         elif action == "disable":
+            name = input().strip()
             acc = input().strip()
             self.frontend.disable(acc)
 
         elif action == "changeplan":
+            name = input().strip()
             acc = input().strip()
             self.frontend.changeplan(acc)
 

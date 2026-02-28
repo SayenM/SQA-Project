@@ -40,24 +40,57 @@ class FrontEnd:
     # login
     # standard or admin
     # name (if standard)
-    def login(self, session_type, name=""):
+    def login(self):
         if self.current_user:
             print("Error: Already logged in.")
             return
-        self.current_user = session_type
-        self.admin = (session_type == "admin")
+
+        session_type = input().strip()
+
+        if session_type == "admin":
+            self.current_user = "admin"
+            self.admin = True
+            print("Welcome Admin!")
+            return
+
+        if session_type == "standard":
+            name = input().strip()
+
+            try:
+                with open("current_accounts.txt", "r") as f:
+                    for line in f:
+                        acc_number = line[0:5]
+                        if acc_number == "00000":
+                            break  # EOF marker
+
+                        raw_name = line[5:25]
+                        full_name = raw_name.rstrip("_").replace("_", " ")
+
+                        if full_name == name:
+                            self.current_user = "standard"
+                            self.admin = False
+                            print(f"Welcome {name}!")
+                            return
+            except FileNotFoundError:
+                print("Error: Account file not found.")
+                return
+
+            print("Error: Account holder not found.")
+            return
+
+        print("Error: Invalid session type.")
         
 
     # Logout current user and write session transactions to file.
     # logout
     def logout(self):
         if self.current_user:
-            print(f"{self.current_user} logged out")
+            print(f"Goodbye!")
             self.write_session_file()
             self.current_user = None
             self.admin = False
         else:
-            print("No user is currently logged in")
+            print("Error: Not logged in.")
     
     # ------------------------
     # TRANSACTIONS
@@ -219,11 +252,11 @@ class FrontEnd:
             return
 
         if len(name) > 20:
-            print("Error: Account holder name exceeds 20 characters.")
+            print("Error: Name too long.")
             return
 
         if balance > 99999.99:
-            print("Error: Initial balance exceeds $99999.99.")
+            print("Error: Balance exceeds $99999.99.")
             return
 
         if acc_number in self.accounts:
@@ -231,7 +264,7 @@ class FrontEnd:
             return
 
         self.accounts[acc_number] = BankAccount(name, acc_number, balance)
-        print("Account created successfully.")
+        print("Account created.")
         self.append_daily_transaction("05", name, acc_number, balance)
 
     # delete an account (Admin only)
@@ -243,7 +276,7 @@ class FrontEnd:
             return
 
         if acc_number not in self.accounts:
-            print("Error: Account holder or account number does not exist.")
+            print("Error: Account not found.")
             return
 
         account = self.accounts[acc_number]
@@ -251,7 +284,7 @@ class FrontEnd:
 
         del self.accounts[acc_number]
 
-        print("Account deleted successfully.")
+        print("Account deleted.")
         self.append_daily_transaction("06", name, acc_number)
 
     # disable an account (Admin only)
@@ -263,13 +296,13 @@ class FrontEnd:
             return
 
         if acc_number not in self.accounts:
-            print("Error: Account holder or account number does not exist.")
+            print("Error: Account not found.")
             return
 
         account = self.accounts[acc_number]
         account.status = "D"
 
-        print("Account disabled successfully.")
+        print("Account disabled.")
         self.append_daily_transaction("07", account.account_name, acc_number)
 
     # Switch from student plan to non-student plan (Admin only)
@@ -282,13 +315,13 @@ class FrontEnd:
             return
 
         if acc_number not in self.accounts:
-            print("Error: Account holder or account number does not exist.")
+            print("Error: Account not found.")
             return
 
         account = self.accounts[acc_number]
         account.payment_plan = "NP"
 
-        print("Payment plan changed successfully.")
+        print("Plan changed.")
         self.append_daily_transaction("08", account.account_name, acc_number)
     
     # ------------------------

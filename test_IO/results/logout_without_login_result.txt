@@ -1,1 +1,1 @@
-No user is currently logged in
+Error: Not logged in.

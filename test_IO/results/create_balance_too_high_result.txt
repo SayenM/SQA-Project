@@ -1,1 +1,2 @@
-Error: Initial balance exceeds $99999.99.
+Welcome Admin!
+Error: Balance exceeds $99999.99.

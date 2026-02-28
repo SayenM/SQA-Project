@@ -1,1 +1,2 @@
-Error: Insufficient funds.
+Welcome Alice Jane!
+Error: Maximum withdrawal is $500.00.

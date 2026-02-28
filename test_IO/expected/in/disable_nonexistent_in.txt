@@ -1,5 +1,5 @@
 login
 admin
 disable
-GhostUser
+Ghost User
 99999

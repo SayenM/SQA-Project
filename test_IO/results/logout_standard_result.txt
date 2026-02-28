@@ -1,1 +1,2 @@
-standard logged out
+Welcome Alice Jane!
+Goodbye!

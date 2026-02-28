@@ -1,1 +1,2 @@
-Error: Invalid account.
+Welcome Alice Jane!
+Transfer of $500.00 successful.

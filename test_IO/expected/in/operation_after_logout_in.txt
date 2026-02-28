@@ -1,6 +1,6 @@
 login
 standard
-Alice
+Alice Jane
 logout
 withdrawal
 12345

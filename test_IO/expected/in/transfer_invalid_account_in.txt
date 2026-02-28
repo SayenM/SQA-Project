@@ -1,6 +1,6 @@
 login
 standard
-Alice
+Alice Jane
 transfer
 99999
 67890

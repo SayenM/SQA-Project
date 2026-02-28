@@ -1,5 +1,5 @@
 login
 admin
 disable
-Alice
-12345
+Bob Johnson
+67890

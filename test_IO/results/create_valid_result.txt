@@ -1,1 +1,2 @@
-Account created successfully.
+Welcome Admin!
+Account created.

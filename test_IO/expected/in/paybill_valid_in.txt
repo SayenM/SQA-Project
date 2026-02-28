@@ -1,6 +1,6 @@
 login
 standard
-Alice
+Alice Jane
 paybill
 12345
 The Bright Light Electric Company (EC)

@@ -1,1 +1,2 @@
-Error: Account holder name exceeds 20 characters.
+Welcome Admin!
+Error: Name too long.
