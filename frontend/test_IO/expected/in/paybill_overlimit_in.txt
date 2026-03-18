@@ -1,0 +1,7 @@
+login
+standard
+Alice Jane
+paybill
+12345
+Fast Internet, Inc. (FI)
+3000

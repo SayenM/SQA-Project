@@ -1,0 +1,7 @@
+login
+standard
+Alice Jane
+transfer
+12345
+00002
+1500

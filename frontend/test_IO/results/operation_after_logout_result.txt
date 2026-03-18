@@ -1,0 +1,3 @@
+Welcome Alice Jane!
+Goodbye!
+Error: Not logged in.

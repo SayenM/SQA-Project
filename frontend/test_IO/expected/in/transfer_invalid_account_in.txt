@@ -1,0 +1,7 @@
+login
+standard
+Alice Jane
+transfer
+99999
+67890
+100
