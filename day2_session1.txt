@@ -1,0 +1,7 @@
+login
+standard
+Jane Doe
+deposit
+00002
+200.00
+logout

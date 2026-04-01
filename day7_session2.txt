@@ -1,0 +1,9 @@
+login
+admin
+deposit
+00004
+1000.00
+disable
+Hank Pym
+00010
+logout

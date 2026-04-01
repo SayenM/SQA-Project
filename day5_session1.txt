@@ -1,0 +1,12 @@
+login
+standard
+Hank Pym
+paybill
+00010
+Credit Card Company Q (CQ)
+200.00
+paybill
+00010
+Fast Internet, Inc. (FI)
+80.00
+logout

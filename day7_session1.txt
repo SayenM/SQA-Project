@@ -1,0 +1,8 @@
+login
+standard
+Diana Prince
+transfer
+00006
+00001
+500.00
+logout

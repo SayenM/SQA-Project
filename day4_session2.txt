@@ -1,0 +1,10 @@
+login
+admin
+delete
+Eve Adams
+00007
+transfer
+00006
+00008
+1000.00
+logout

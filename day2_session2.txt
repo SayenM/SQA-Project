@@ -1,0 +1,10 @@
+login
+admin
+transfer
+00003
+00004
+250.00
+disable
+Bob Johnson
+00003
+logout

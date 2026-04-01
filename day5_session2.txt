@@ -1,0 +1,9 @@
+login
+admin
+create
+Peter Parker
+1000.00
+create
+Mary Jane Watson
+500.00
+logout

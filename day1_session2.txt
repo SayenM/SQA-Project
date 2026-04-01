@@ -1,0 +1,9 @@
+login
+admin
+deposit
+00002
+500.00
+create
+New Customer
+00.00
+logout

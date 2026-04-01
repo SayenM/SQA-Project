@@ -1,0 +1,10 @@
+login
+admin
+changeplan
+John Smith
+00001
+paybill
+00001
+The Bright Light Electric Company (EC)
+75.00
+logout

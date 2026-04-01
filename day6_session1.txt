@@ -1,0 +1,10 @@
+login
+standard
+Frank Castle
+withdrawal
+00008
+400.00
+deposit
+00008
+100.00
+logout
