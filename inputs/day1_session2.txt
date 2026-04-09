@@ -1,0 +1,9 @@
+login
+admin
+deposit
+00002
+500.00
+disable
+Eve Adams
+00007
+logout

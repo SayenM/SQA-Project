@@ -1,0 +1,11 @@
+DISCLAIMER
+==========
+Before running weekly.sh, current_accounts.txt must contain the original
+seed accounts. If weekly.sh has been run before, reset it by copying the
+provided seed file:
+
+    cp seed_current_accounts.txt current_accounts.txt
+
+Then run the weekly script from the project root:
+
+    bash shells/weekly.sh

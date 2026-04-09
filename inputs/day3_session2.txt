@@ -1,9 +1,9 @@
 login
 admin
-changeplan
-Grace Hopper
-00009
 deposit
 00009
 300.00
+disable
+Bob Johnson
+00003
 logout

@@ -1,9 +1,9 @@
 login
 admin
+changeplan
+John Smith
+00001
 deposit
-00002
+00005
 500.00
-create
-New Customer
-00.00
 logout
